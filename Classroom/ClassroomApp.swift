@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct ClassroomApp: App {
+    @AppStorage("AUTH_KEY") public var authorization = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if authorization{
+                MainView()
+                    .preferredColorScheme(.light)
+            }else{
+                LoginView()
+                    .preferredColorScheme(.light)
+            }
         }
     }
 }
